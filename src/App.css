@@ -98,12 +98,43 @@ header>h1{
   grid-template-rows: 125px .333fr auto;
 }
 
+.display-section hr{
+  width:90%;
+  opacity:.33;
+}
+
+.display-section h2{
+  margin-bottom:0;
+}
+
+.display-section h1{
+  margin-bottom:-1.5rem;
+}
+
+.education-section h2{
+  margin-left: 4rem;
+  font-style:italic;
+  font-weight: 500;
+}
+
+.work-section h2{
+  margin-left: 4rem;
+  font-style:italic;
+  font-weight: 500;
+}
+
+.display-section
+
+
 .first-display{
   grid-row: 2/3;
+  margin-left: 2rem;
+  margin-top: .75rem;
 }
 
 .second-display{
   grid-row: 3/4;
+  margin-left: 2rem;
 }
 
 .text-input{
