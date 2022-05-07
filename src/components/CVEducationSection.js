@@ -8,11 +8,9 @@ class CVEducationSection extends Component {
         const info = this.props.info.form;
         return(
             <div className="education-section">
-                <h2>Education</h2>
-                <hr></hr>
-                <h1>{info.school}</h1>
-                <h2>{info.program}</h2>
-                <p>{info.startDate} - {info.endDate}</p>
+                <h1>{info.school || "School"}</h1>
+                <h2>{info.program || "Program"}</h2>
+                <p>{info.startDate || "Start Date"} - {info.endDate || "End Date"}</p>
                 {info.graduated ? <h3>Graduted</h3> : ""}
             </div>
         )

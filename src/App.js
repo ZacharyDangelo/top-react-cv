@@ -94,9 +94,6 @@ class App extends Component {
   handleEducationInfoChange = (e, field, id) =>{
     let items = [...this.state.educationSections];
     let item = {...items.filter((section) => section.id === id)[0]};
-    console.log(item)
-    console.log(id);
-    console.log(field);
     console.log(e);
     switch(field){
       case "school":
@@ -155,6 +152,8 @@ class App extends Component {
             </div>
             <div className="display-section">
               <CVHeader info={this.state.generalInfo} />
+              <h2>Education</h2>
+              <hr></hr>
               {this.state.educationSections.map((section) => <CVEducationSection key={section.id} info={section} />)}
             </div>
           </div>

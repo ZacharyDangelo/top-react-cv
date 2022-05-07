@@ -7,10 +7,13 @@ class CheckboxInput extends Component {
 
     render(){
         const label = this.props.label;
+        const onChange = this.props.onChange;
+        const field = this.props.field;
+        const id = this.props.id;
         return(
             <div className="checkbox-input">
                 <label>{label}</label>
-                <input type="checkbox"></input>
+                <input type="checkbox" onChange={(e) => onChange(e, field, id)}></input>
             </div>
         )
     }

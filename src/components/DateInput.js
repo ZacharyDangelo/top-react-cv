@@ -6,10 +6,13 @@ class DateInput extends Component {
     }
     render(){
         const label = this.props.label;
+        const onChange = this.props.onChange;
+        const field = this.props.field;
+        const id = this.props.id;
         return(
             <div className="date-input">
                 <label>{label}</label>
-                <input type="date"></input>
+                <input type="date" onChange={(e) => onChange(e, field, id)}></input>
             </div>
         )
     }
