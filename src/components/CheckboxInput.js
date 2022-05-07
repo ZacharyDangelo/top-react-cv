@@ -13,7 +13,7 @@ class CheckboxInput extends Component {
         return(
             <div className="checkbox-input">
                 <label>{label}</label>
-                <input type="checkbox" onChange={(e) => onChange(e, field, id)}></input>
+                <input type="checkbox" value="true" onChange={(e) => onChange(e, field, id)}></input>
             </div>
         )
     }
