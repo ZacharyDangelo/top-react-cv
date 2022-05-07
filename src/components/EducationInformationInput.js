@@ -8,14 +8,15 @@ class EducationInformationInput extends Component {
     
     constructor(props){
         super(props);
+        const onChange=this.props.onChange;
         const id = uniqid();
         const educationForm = 
         <form className="education-form" key={id}>
-            <TextInput placeholder="School name" label="School:" />
-            <TextInput placeholder="Degree/Program name" label="Degree/Program:" />
-            <DateInput label="Start Date:" />
-            <DateInput label="End Date:" />
-            <CheckboxInput label="Graduated?" />
+            <TextInput placeholder="School name" label="School:" onChange={onChange} field="school" id={id} />
+            <TextInput placeholder="Degree/Program name" label="Degree/Program:" onChange={onChange} field="program" id={id} />
+            <DateInput label="Start Date:" onChange={onChange} field="startDate" id={id} />
+            <DateInput label="End Date:" onChange={onChange} field="endDate" id={id}/>
+            <CheckboxInput label="Graduated?" onChange={onChange} field="graduated" id={id}/>
         </form>
         this.state = {
             sections: [{
@@ -27,14 +28,15 @@ class EducationInformationInput extends Component {
     }
 
     addForm = () =>{
+        const onChange=this.props.onChange;
         const id = uniqid();
         const educationForm = 
         <form className="education-form" key={id}>
-            <TextInput placeholder="School name" label="School:" />
-            <TextInput placeholder="Degree/Program name" label="Degree/Program:" />
-            <DateInput label="Start Date:" />
-            <DateInput label="End Date:" />
-            <CheckboxInput label="Graduated?" />
+            <TextInput placeholder="School name" label="School:" onChange={onChange} field="school" id={id} />
+            <TextInput placeholder="Degree/Program name" label="Degree/Program:" onChange={onChange} field="program" id={id} />
+            <DateInput label="Start Date:" onChange={onChange} field="startDate" id={id} />
+            <DateInput label="End Date:" onChange={onChange} field="endDate" id={id}/>
+            <CheckboxInput label="Graduated?" onChange={onChange} field="graduated" id={id}/>
         </form>
         this.setState({
             sections: this.state.sections.concat(
@@ -47,10 +49,12 @@ class EducationInformationInput extends Component {
         this.props.onFormAdded(educationForm, id);
     }
 
-    removeForm = () =>{
+    removeForm = (id) =>{
+        console.log(id);
         this.setState({
             sections: this.state.sections.filter((_,i) => i !== this.state.sections.length -1)
         })
+        this.props.onFormRemoved(id);
     }
 
     render(){
@@ -58,7 +62,7 @@ class EducationInformationInput extends Component {
             <div className="education-information-input input-container">
                 {this.state.sections.map((section) => section.form)}
                 <button onClick={this.addForm}>Add Another</button>
-                {this.state.sections.length > 1 && <button onClick={this.removeForm}>Remove</button>}
+                {this.state.sections.length > 1 && <button onClick={() => this.removeForm(this.state.sections[this.state.sections.length-1].id)}>Remove</button>}
             </div>
         )
     }

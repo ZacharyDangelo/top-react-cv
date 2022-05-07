@@ -72,15 +72,72 @@ class App extends Component {
     this.setState({
       educationSections: this.state.educationSections.concat({
         id: id,
-        form: form,
+        form: {
+          school: "",
+          program: "",
+          startDate: "",
+          endDate: "",
+          graduated: false
+        }
       })
     })
     console.log(this.state.educationSections[0]);
   }
 
   handleEducationFormRemoved = (id) =>{
-    
+    this.setState({
+      educationSections: this.state.educationSections.filter((item) => item.id !== id),
+    })
   }
+
+  handleEducationInfoChange = (e, field, id) =>{
+    let items = [...this.state.educationSections];
+    let item = {...items.filter((section) => section.id === id)[0]};
+    console.log(item)
+    console.log(id);
+    console.log(field);
+    console.log(e);
+    switch(field){
+      case "school":
+        item.form.school = e.target.value;
+        items[items.indexOf(items.map((section) => section.id === id))] = item;
+        this.setState({
+          educationSections: items,
+        });
+        break;
+      case "program":
+        item.form.program = e.target.value;
+        items[items.indexOf(items.map((section) => section.id === id))] = item;
+        this.setState({
+          educationSections: items,
+        });
+        break;
+      case "startDate":
+        item.form.startDate = e.target.value;
+        items[items.indexOf(items.map((section) => section.id === id))] = item;
+        this.setState({
+          educationSections: items,
+        });
+        break;
+      case "endDate":
+        item.form.endDate = e.target.value;
+        items[items.indexOf(items.map((section) => section.id === id))] = item;
+        this.setState({
+          educationSections: items,
+        });
+        break;
+      case "graduated":
+        item.form.graduated = e.target.value;
+        items[items.indexOf(items.map((section) => section.id === id))] = item;
+        this.setState({
+          educationSections: items,
+        });
+        break;
+    }
+
+  }
+
+
 
   render(){
     return (
@@ -91,12 +148,13 @@ class App extends Component {
               <h2 className="section-header">General Information</h2>
               <GeneralInformationInput onChange={this.handleGeneralInfoChange} />
               <h2 className="section-header">Education Information</h2>
-              <EducationInformationInput onFormAdded={this.handleEducationFormAdded} />
+              <EducationInformationInput onFormAdded={this.handleEducationFormAdded} onFormRemoved={this.handleEducationFormRemoved} onChange={this.handleEducationInfoChange}/>
               <h2 className="section-header">Work Information</h2>
               <WorkInformationInput />
             </div>
             <div className="display-section">
               <CVHeader info={this.state.generalInfo} />
+              {this.state.educationSections.map((section) => <CVEducationSection key={section.id} info={section} />)}
             </div>
           </div>
       </div>
