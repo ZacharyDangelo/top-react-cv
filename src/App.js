@@ -21,6 +21,7 @@ class App extends Component {
       },
       educationSections: [],
       workSections: [],
+      firstSection: "education",
     };
   }
 
@@ -204,6 +205,16 @@ class App extends Component {
     }
   }
 
+
+  changeSectionOrder = () => {
+    if(this.state.firstSection == "education"){
+      this.setState({firstSection: "work"})
+    }
+    else{
+      this.setState({firstSection: "education"})
+    }
+  }
+
   render(){
     return (
       <div className="App">
@@ -212,10 +223,18 @@ class App extends Component {
             <div className="input-section">
               <h2 className="section-header">General Information</h2>
               <GeneralInformationInput onChange={this.handleGeneralInfoChange} />
-              <h2 className="section-header">Education Information</h2>
-              <EducationInformationInput onFormAdded={this.handleEducationFormAdded} onFormRemoved={this.handleEducationFormRemoved} onChange={this.handleEducationInfoChange}/>
-              <h2 className="section-header">Work Information</h2>
-              <WorkInformationInput onFormAdded={this.handleWorkFormAdded} onFormRemoved={this.handleWorkFormRemoved} onChange={this.handleWorkInfoChange}/>
+
+              <div class={this.state.firstSection === "education" ? "first-input" : "second-input"}>
+                <h2 className="section-header">Education Information</h2>
+                <button onClick={this.changeSectionOrder}>Move Down</button>
+                <EducationInformationInput onFormAdded={this.handleEducationFormAdded} onFormRemoved={this.handleEducationFormRemoved} onChange={this.handleEducationInfoChange}/>
+              </div>
+              <div class={this.state.firstSection === "work" ? "first-input" : "second-input"}>
+                <h2 className="section-header">Work Information</h2>
+                <button onClick={this.changeSectionOrder}>Move Up</button>
+                <WorkInformationInput onFormAdded={this.handleWorkFormAdded} onFormRemoved={this.handleWorkFormRemoved} onChange={this.handleWorkInfoChange}/>
+              </div>
+
             </div>
             <div className="display-section">
               <CVHeader info={this.state.generalInfo} />

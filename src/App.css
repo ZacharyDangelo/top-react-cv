@@ -30,12 +30,20 @@ header>h1{
 
 .input-section{
   border:thin solid black;
+  display:grid;
 }
 
 .input-container{
   display:flex;
   flex-direction:column;
   align-items:center;
+}
+
+.first-input{
+  grid-row: 3 / 4;
+}
+.second-input{
+  grid-row: 4 / 5;
 }
 
 .general-information-input>form{
