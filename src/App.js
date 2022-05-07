@@ -226,24 +226,27 @@ class App extends Component {
 
               <div class={this.state.firstSection === "education" ? "first-input" : "second-input"}>
                 <h2 className="section-header">Education Information</h2>
-                <button onClick={this.changeSectionOrder}>Move Down</button>
+                <button class="move-button" onClick={this.changeSectionOrder}>Change Order</button>
                 <EducationInformationInput onFormAdded={this.handleEducationFormAdded} onFormRemoved={this.handleEducationFormRemoved} onChange={this.handleEducationInfoChange}/>
               </div>
               <div class={this.state.firstSection === "work" ? "first-input" : "second-input"}>
                 <h2 className="section-header">Work Information</h2>
-                <button onClick={this.changeSectionOrder}>Move Up</button>
                 <WorkInformationInput onFormAdded={this.handleWorkFormAdded} onFormRemoved={this.handleWorkFormRemoved} onChange={this.handleWorkInfoChange}/>
               </div>
 
             </div>
             <div className="display-section">
               <CVHeader info={this.state.generalInfo} />
-              <h2>Education</h2>
-              <hr></hr>
-              {this.state.educationSections.map((section) => <CVEducationSection key={section.id} info={section} />)}
-              <h2>Employment</h2>
-              <hr></hr>
-              {this.state.workSections.map((section) => <CVWorkSection key={section.id} info={section} />)}
+              <div className={this.state.firstSection === "education" ? "first-display" : "second-display"}>
+                <h2>Education</h2>
+                    <hr></hr>
+                {this.state.educationSections.map((section) => <CVEducationSection key={section.id} info={section} />)}
+              </div>
+              <div className={this.state.firstSection === "work" ? "first-display" : "second-display"}>
+                <h2>Employment</h2>
+                <hr></hr>
+                {this.state.workSections.map((section) => <CVWorkSection key={section.id} info={section} />)}
+              </div>
             </div>
           </div>
       </div>

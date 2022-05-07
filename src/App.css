@@ -46,6 +46,14 @@ header>h1{
   grid-row: 4 / 5;
 }
 
+.move-button{
+  position:absolute;
+  top: 50%;
+  left: 5%;
+  height: 6rem;
+  width: 6rem;
+}
+
 .general-information-input>form{
   display:grid;
   grid-template-rows: 1fr 1fr;
@@ -86,6 +94,16 @@ header>h1{
 
 .display-section{
   border: thin solid black;
+  display:grid;
+  grid-template-rows: 125px .333fr auto;
+}
+
+.first-display{
+  grid-row: 2/3;
+}
+
+.second-display{
+  grid-row: 3/4;
 }
 
 .text-input{
