@@ -7,6 +7,7 @@ import EducationInformationInput from "./components/EducationInformationInput";
 import WorkInformationInput from "./components/WorkInformationInput";
 import CVHeader from './components/CVHeader';
 import InputSection from "./components/InputSection";
+import CVEducationSection from "./components/CVEducationSection";
 
 class App extends Component {
   constructor(){
